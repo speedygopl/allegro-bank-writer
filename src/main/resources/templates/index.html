@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>ALLEGRO API CONTROLLER</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        body {
+            background-color: lightskyblue;
+        }
+        strong {
+            padding: 5px;
+            border-style: solid;
+            border-radius: 10px;
+            background-color:orchid;
+        }
+        div.cialoProgramu {
+            padding: 5px;
+            background-color: khaki;
+            border-radius: 10px;
+            border: black;
+            border-style:solid;
+            width: fit-content;
+            height: fit-content;
+
+        }
+
+        textarea {
+            width:190px;
+            height: 20px;
+            resize: none;
+        }
+    </style>
+</head>
+<br>
+<ul>
+
+    <li><strong>BankWriter 1.0</strong>
+        <br><br>
+        <div class="cialoProgramu">
+            <button id="refresh" onclick="myFunction(this.id); location.href='/refresh'">Odśwież token</button>
+            <button id="submitButton" onclick="myFunction(this.id); location.href='/dojob'">ODPISZ BANKI !!!</button>
+            <button id="koniec" onclick="myFunction(this.id); location.href='/shutdown'">Zakończ program</button>
+        </div>
+    </li>
+
+    <br><br>
+
+    <li><strong>EndedOffers 1.0</strong>
+        <br><br>
+        <div class="cialoProgramu">
+            <button id="noweZdarzenia" onclick="myFunction(this.id); location.href='/offerendedevents'">Nowe Zdarzenia</button>
+            <button id="wczytajZakonczonePobierzZdjecia" onclick="myFunction(this.id); location.href='/downloadendedimages'">Zapisz Zakończone i ściągnij zdjęcia</button>
+            <br><br>
+            <form action="http://localhost:8080/searchforauction" method="GET">
+                <label>SEARCH ENDED : </label>
+                <textarea name="searchString" placeholder="Enter the text..."></textarea>
+                <input type="submit" name="search" />
+            </form>
+        </div>
+    </li>
+
+    <br><br>
+
+    <li><strong>InactiveOffers 1.0</strong>
+        <br><br>
+        <div class="cialoProgramu">
+            <form action="http://localhost:8080/makeinactiveoffer" method="GET">
+                <label>MAKE DRAFT : </label>
+                <textarea name="searchString" placeholder="Enter auction id..."></textarea>
+                <input type="submit" name="MAKE DRAFT" />
+            </form>
+            <br>
+            <form action="http://localhost:8080/rundouble" method="GET">
+                <label>DOUBLE INACTIVE : </label>
+                <textarea name="id" placeholder="Enter auction id..."></textarea>
+                <input type="submit" name="DOUBLE" />
+            </form>
+            <br><br>
+            <button id="pokazNoweSzkice" onclick="myFunction(this.id); location.href='/runshowinactive'">Pokaż nowe szkice</button>
+            <button id="wczytajSzkicePobierzZdjecia" onclick="myFunction(this.id); location.href='/runstoreinactive'">Zapisz Szkice i ściągnij zdjęcia</button>
+        </div>
+    </li>
+
+    <br><br>
+
+    <li><strong>OrderManager 1.0</strong>
+        <br><br>
+        <div class="cialoProgramu">
+            <form action="http://localhost:8080/runlistoftires" method="GET">
+                <label>LIST OF TIRES : </label>
+                <input type="submit" name="TIRE" />
+            </form>
+        </div>
+    </li>
+
+    <br><br>
+
+</ul>
+
+
+
+<!--/* funkcja javascript, która po kliknięciu w przycisk dezaktywuje przycisk */-->
+<script>
+    document.getElementById("refresh").addEventListener("click", myFunction);
+    document.getElementById("submitButton").addEventListener("click", myFunction);
+    document.getElementById("koniec").addEventListener("click", myFunction);
+    document.getElementById("wczytajZakonczonePobierzZdjecia").addEventListener("click", myFunction);
+    document.getElementById("noweZdarzenia").addEventListener("click", myFunction);
+    document.getElementById("wczytajSzkicePobierzZdjecia").addEventListener("click", myFunction);
+    document.getElementById("pokazNoweSzkice").addEventListener("click", myFunction);
+
+    function myFunction(btn) {
+        document.getElementById(btn).disabled = true;
+    }
+</script>
+
+
+</body>
+
+</html>
